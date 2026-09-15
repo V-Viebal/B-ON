@@ -22,3 +22,4 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/v-viebal/b-on:latest
+
