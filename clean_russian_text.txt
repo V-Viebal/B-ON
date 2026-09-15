@@ -1,0 +1,33 @@
+flex sm:gap-5 flex-col gap-5
+highDesktopSrc
+rounded-2xl flex-1/2
+text-[14px] text-white font-thin text-center
+Переговорный стол Mergentia 
+flex flex-col gap-c20 lg:gap-c28
+font-base text-grayscale-4 [&_code]:font-base [&_:is(h1,h2,h3)]:uppercase [&_:first-child]:mt-0 [&_.font-bold]:font-normal [&_:last-child]:mb-0 [&_:is(h1,h2)]:text-[22px] [&_:is(h1,h2,h3)]:text-primary [&_:is(h1,h2)]:my-5 [&_p]:my-4 font-[100] text-[clamp(0.875rem,0.875rem+0vw,0.875rem)] leading-[clamp(1.25rem,1.25rem+0vw,1.25rem)] lg:text-[clamp(0.875rem,0.5673rem+0.4808vw,1rem)] lg:leading-[clamp(1.25rem,0.6346rem+0.9615vw,1.5rem)] xl:text-[clamp(1rem,0.25rem+0.8333vw,1.25rem)] xl:leading-[1.625rem]
+prose space-y-c16 [&_ul]:list-disc [&_ol]:list-decimal [&_:is(ul,ol)]:pl-c20 [&_li+li]:mt-c8
+Mergentia для переговорных разного масштаба
+При создании 
+мы учли все, что влияет на качество деловой встречи: количество участников, личное пространство каждого, эргономику, техническое оснащение и представительскую функцию. Мы разработали модель в трех вариантах размера, а самая вместительная версия позволяет разместить до 18 человек.
+Для столешницы мы предусмотрели разные варианты натурального шпона и кварцевого агломерата. Внушительные круглые опоры обтянули натуральной кожей и дополнили декоративными швами, выполненными вручную.
+В центр столешницы мы интегрировали лючки для подключения техники и зарядки устройств. Все необходимое остается под рукой, а провода и технические элементы сохраняют рабочую поверхность организованной.
+ объединяет эргономику для продолжительных встреч, функциональное оснащение, натуральные материалы и выразительный масштаб, необходимый для представительской переговорной.
+flex sm:gap-5 sm:flex-row flex-col gap-10
+flex gap-5 flex-col
+highDesktopSrc
+rounded-2xl w-full
+text-center text-[14px] text-white font-[100]
+localeCookie
+noopener noreferrer
+underline underline-offset-4
+font-bold text-primary underline
+Переговорный стол Mergentia от FiftyFourms
+localeCookie
+noopener noreferrer
+underline underline-offset-4
+font-bold text-primary underline
+переговорного стола Mergentia 
+localeCookie
+noopener noreferrer
+underline underline-offset-4
+font-bold text-primary underline

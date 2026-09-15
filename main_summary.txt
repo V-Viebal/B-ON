@@ -1,0 +1,200 @@
+<img src="https://media.fiftyfourms.com/thumbnail_web_logo_off_1080_1b0c933560.jpg" href="" class="blur-sm transition-opacity duration-700 ">
+<img src="https://media.fiftyfourms.com/web_logo_off_1080_1b0c933560.jpg" href="" class="transition-opacity duration-1000 ease-[c">
+<h1 src="" href="" class="sr-only">
+</h1>
+<img src="https://media.fiftyfourms.com/Fifty_c87086e7ef.svg" href="" class="object-cover transition-opacity duration">
+<p src="" href="" class="">
+TEXT: Российский премиальный бренд мебели
+TEXT: от Studia 54, созданный на базе итальянских технологий и ручной работы
+</p>
+<a src="" href="https://fiftyfourms.com/catalog" class="transition-colors duration-300 w-full cu">
+TEXT: смотреть каталог
+</a>
+TEXT: {"@context":"https://schema.org","@type":"VideoObject","name":"","description":[{"type":"paragraph","children":[{"text":"Российский премиальный бренд мебели","type":"text","italic":true},{"text":" от Studia 54, созданный на базе итальянских технологий и ручной работы","type":"text"}]}],"contentUrl":"https://media.fiftyfourms.com/web_logo_off_1080_5d6a037eb8.mp4","thumbnailUrl":["https://media.fiftyfourms.com/web_logo_off_1080_1b0c933560.jpg","https://media.fiftyfourms.com/web_vert_logo_off_1080_627fefdbff.jpg"]}
+<img src="https://cdn.fiftyfourms.com/photo_1_aff59cda9a.webp" href="" class="object-cover transition-opacity duration">
+TEXT: НАШ ПУТЬ
+<p src="" href="" class="">
+TEXT: Наш путь начался с разработки коллекции для
+TEXT: итальянской фабрики Medea —
+TEXT: она до сих пор представлена на рынке Италии. Этот опыт стал основой для открытия
+TEXT: собственной мануфактуры площадью 2000 м²
+TEXT: в Санкт-Петербурге, где мы контролируем качество и сроки производства.
+</p>
+<p src="" href="" class="">
+</p>
+<p src="" href="" class="">
+TEXT: Сегодня над мебелью работают
+TEXT: более 100 мастеров и дизайнеров
+TEXT: , включая итальянских технологов. Мы объединили итальянскую школу производства и авторский российский дизайн, создавая мебель вручную из премиальных материалов.
+</p>
+<p src="" href="" class="">
+</p>
+<p src="" href="" class="">
+TEXT: Наши коллекции регулярно представлены
+TEXT: на международных выставках
+TEXT: , включая ARTDOM в Москве
+</p>
+<img src="https://cdn.fiftyfourms.com/photo_2_8702a093e9.webp" href="" class="object-cover transition-opacity duration">
+<img src="https://cdn.fiftyfourms.com/photo_3_6eed2dff71.webp" href="" class="object-cover transition-opacity duration">
+<h2 src="" href="" class="">
+TEXT: 2 000 М²
+TEXT: МАНУФАКТУРЫ
+</h2>
+<p src="" href="" class="">
+TEXT: Итальянские технологии, российский дизайн
+</p>
+<img src="https://cdn.fiftyfourms.com/thumbnail_photo_4_blossom_0bc003668e.webp" href="" class="object-cover blur-sm transition-opacity ">
+<h3 src="" href="" class="text-base leading-c18 lg:text-[clamp(1re">
+TEXT: 100+ мастеров и дизайнеров
+</h3>
+<p src="" href="" class="text-[0.875rem] leading-[clamp(1.125rem,">
+TEXT: Команда профессионалов с участием итальянских технологов и дизайнеров контролирует качество благодаря ручной работе
+</p>
+<img src="https://cdn.fiftyfourms.com/icon_1_d3b9baf6f6.webp" href="" class="h-full max-h-[clamp(3.125rem,1.25rem+3.9">
+<h3 src="" href="" class="text-base leading-c18 lg:text-[clamp(1re">
+TEXT: Ручная работа
+</h3>
+<p src="" href="" class="text-[0.875rem] leading-[clamp(1.125rem,">
+TEXT: Аккуратная выкройка и пошив, натяжка материалов, шлифовка и финишная отделка
+</p>
+<img src="https://cdn.fiftyfourms.com/icon_2_e5b39be09a.webp" href="" class="h-full max-h-[clamp(3.125rem,1.25rem+3.9">
+<h3 src="" href="" class="text-base leading-c18 lg:text-[clamp(1re">
+TEXT: Премиальные материалы
+</h3>
+<p src="" href="" class="text-[0.875rem] leading-[clamp(1.125rem,">
+TEXT: Итальянские ткани, велюр, натуральная кожа, редкие породы шпона — Walnut Root, Macassar, Eucalyptus, Anigre — все, что определяет ощущение премиальности и долговечности
+</p>
+<img src="https://cdn.fiftyfourms.com/icon_3_606de1f912.webp" href="" class="h-full max-h-[clamp(3.125rem,1.25rem+3.9">
+<h3 src="" href="" class="text-base leading-c18 lg:text-[clamp(1re">
+TEXT: В 3 раза быстрее Италии
+</h3>
+<p src="" href="" class="text-[0.875rem] leading-[clamp(1.125rem,">
+TEXT: От вашего заказа до доставки — в среднем 3 месяца, вместо 9
+</p>
+<img src="https://cdn.fiftyfourms.com/icon_4_aa285e2cbb.webp" href="" class="h-full max-h-[clamp(3.125rem,1.25rem+3.9">
+<button src="" href="" class="text-[clamp(18px,11.3333px+0.8681vw,28px">
+TEXT: 2019
+</button>
+<button src="" href="" class="w-[26px] h-[26px] flex items-center curs">
+</button>
+<button src="" href="" class="text-[clamp(18px,11.3333px+0.8681vw,28px">
+TEXT: 2021
+</button>
+<button src="" href="" class="w-[26px] h-[26px] flex items-center curs">
+</button>
+<button src="" href="" class="text-[clamp(18px,11.3333px+0.8681vw,28px">
+TEXT: 2022
+</button>
+<button src="" href="" class="w-[26px] h-[26px] flex items-center curs">
+</button>
+<button src="" href="" class="text-[clamp(18px,11.3333px+0.8681vw,28px">
+TEXT: 2025
+</button>
+<button src="" href="" class="w-[26px] h-[26px] flex items-center curs">
+</button>
+<button src="" href="" class="text-[clamp(18px,11.3333px+0.8681vw,28px">
+TEXT: 2026
+</button>
+<button src="" href="" class="w-[26px] h-[26px] flex items-center curs">
+</button>
+<button src="" href="" class="text-[clamp(18px,11.3333px+0.8681vw,28px">
+TEXT: 2019
+</button>
+<button src="" href="" class="w-[26px] h-[26px] flex items-center curs">
+</button>
+<button src="" href="" class="text-[clamp(18px,11.3333px+0.8681vw,28px">
+TEXT: 2021
+</button>
+<button src="" href="" class="w-[26px] h-[26px] flex items-center curs">
+</button>
+<button src="" href="" class="text-[clamp(18px,11.3333px+0.8681vw,28px">
+TEXT: 2022
+</button>
+<button src="" href="" class="w-[26px] h-[26px] flex items-center curs">
+</button>
+<button src="" href="" class="text-[clamp(18px,11.3333px+0.8681vw,28px">
+TEXT: 2025
+</button>
+<button src="" href="" class="w-[26px] h-[26px] flex items-center curs">
+</button>
+<button src="" href="" class="text-[clamp(18px,11.3333px+0.8681vw,28px">
+TEXT: 2026
+</button>
+<button src="" href="" class="w-[26px] h-[26px] flex items-center curs">
+</button>
+<img src="https://media.fiftyfourms.com/ru_2019_1x_207df8cbed.webp" href="" class="transition-opacity duration-1000 ease-[c">
+<img src="https://media.fiftyfourms.com/ru_2021_1x_d70c2999b3.webp" href="" class="transition-opacity duration-1000 ease-[c">
+<img src="https://media.fiftyfourms.com/ru_2022_1x_a30f96a8fa.webp" href="" class="transition-opacity duration-1000 ease-[c">
+<img src="https://media.fiftyfourms.com/ru_2025_1x_cb395f5795.webp" href="" class="transition-opacity duration-1000 ease-[c">
+<img src="https://media.fiftyfourms.com/ru_2026_1x_921d523886.webp" href="" class="transition-opacity duration-1000 ease-[c">
+<img src="https://media.fiftyfourms.com/ru_2019_1x_207df8cbed.webp" href="" class="transition-opacity duration-1000 ease-[c">
+<img src="https://media.fiftyfourms.com/ru_2021_1x_d70c2999b3.webp" href="" class="transition-opacity duration-1000 ease-[c">
+<img src="https://media.fiftyfourms.com/ru_2022_1x_a30f96a8fa.webp" href="" class="transition-opacity duration-1000 ease-[c">
+<img src="https://media.fiftyfourms.com/ru_2025_1x_cb395f5795.webp" href="" class="transition-opacity duration-1000 ease-[c">
+<img src="https://media.fiftyfourms.com/ru_2026_1x_921d523886.webp" href="" class="transition-opacity duration-1000 ease-[c">
+<h2 src="" href="" class="">
+TEXT: НАША ФИЛОСОФИЯ —
+TEXT: FIFTYFOURMS® ФОРМИРУЕТ ПРОСТРАНСТВО
+</h2>
+<p src="" href="" class="">
+TEXT: Мы создаем коллекции мебели для тех, кто привык к идеальному сервису, высоким стандартам и лучшему уровню комфорта. Благодаря продуманному дизайну вся наша мебель
+TEXT: идеально сочетается между собой и органично вписывается в любой интерьер
+</p>
+<a src="" href="https://fiftyfourms.com/inspiration" class="transition-colors duration-300 w-full cu">
+TEXT: смотреть мебель в проектах
+</a>
+<img src="https://cdn.fiftyfourms.com/small_photo_5_f88cb63d41.webp" href="" class="blur-sm transition-opacity duration-700 ">
+<img src="https://cdn.fiftyfourms.com/thumbnail_photo_6_b158c0f7b6.webp" href="" class="object-cover blur-sm transition-opacity ">
+<h2 src="" href="" class="">
+TEXT: ПРЕМИАЛЬНЫЙ УРОВЕНЬ СЕРВИСА ДЛЯ НАШИХ КЛИЕНТОВ И ДИЗАЙНЕРОВ
+</h2>
+<button src="" href="" class="transition-colors duration-300 w-full cu">
+TEXT: больше подробностей для дизайнеров
+</button>
+<h3 src="" href="" class="text-base leading-c18 lg:text-[clamp(1re">
+TEXT: ПЕРСОНАЛЬНЫЙ МЕНЕДЖЕР
+</h3>
+<p src="" href="" class="text-[0.875rem] leading-[clamp(1.125rem,">
+TEXT: Сопровождаем вас на каждом этапе — от подбора мебели до послепродажного сервиса
+</p>
+<img src="https://cdn.fiftyfourms.com/icon_5_421dc352aa.webp" href="" class="h-full max-h-[clamp(3.125rem,1.25rem+3.9">
+<h3 src="" href="" class="text-base leading-c18 lg:text-[clamp(1re">
+TEXT: 3D-МОДЕЛИ
+</h3>
+<p src="" href="" class="text-[0.875rem] leading-[clamp(1.125rem,">
+TEXT: Предоставляем точные модели для интеграции в ваши дизайн-проекты
+</p>
+<img src="https://cdn.fiftyfourms.com/icon_6_892c1b06ee.webp" href="" class="h-full max-h-[clamp(3.125rem,1.25rem+3.9">
+<h3 src="" href="" class="text-base leading-c18 lg:text-[clamp(1re">
+TEXT: 100% МЕБЕЛИ ОТГРУЖАЕТСЯ ВОВРЕМЯ
+</h3>
+<p src="" href="" class="text-[0.875rem] leading-[clamp(1.125rem,">
+TEXT: Соблюдаем сроки, необходимые для успешной реализации вашего проекта
+</p>
+<img src="https://cdn.fiftyfourms.com/icon_7_5a9fe976c3.webp" href="" class="h-full max-h-[clamp(3.125rem,1.25rem+3.9">
+<h3 src="" href="" class="text-base leading-c18 lg:text-[clamp(1re">
+TEXT: ЗАПАТЕНТОВАННЫЕ РЕШЕНИЯ
+</h3>
+<p src="" href="" class="text-[0.875rem] leading-[clamp(1.125rem,">
+TEXT: Все наши изделия защищены патентами, что обеспечивают уникальность и стабильное качество изделий
+</p>
+<img src="https://cdn.fiftyfourms.com/icon_8_6af3eee866.webp" href="" class="h-full max-h-[clamp(3.125rem,1.25rem+3.9">
+<img src="https://cdn.fiftyfourms.com/thumbnail_photo_7_f436ae8303.webp" href="" class="object-cover blur-sm transition-opacity ">
+<p src="" href="" class="text-[clamp(1.25rem,0.5rem+1.5625vw,1.5r">
+TEXT: ЗАЯВКА НА СОТРУДНИЧЕСТВО
+</p>
+<p src="" href="" class="text-[clamp(0.875rem,1.375rem+-0.7812vw,">
+TEXT: Заполните форму, чтобы обсудить возможности сотрудничества и эксклюзивные предложения
+</p>
+TEXT: Я даю согласие на обработку персональных данных в соответствии с
+<a src="" href="/policy" class="text-grayscale-5 cursor-pointer underlin">
+TEXT: Согласием на обработку персональных данных
+</a>
+TEXT: и подтверждаю, что ознакомлен(а) с
+<a src="" href="/privacy" class="text-grayscale-5 cursor-pointer underlin">
+TEXT: Политикой конфиденциальности
+</a>
+TEXT: .
+<button src="" href="" class="transition-colors duration-300 w-full cu">
+TEXT: оставить заявку на сотрудничество
+</button>

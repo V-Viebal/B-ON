@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-grayscale-1: #ffffff;
+    --color-grayscale-2: #f4f4f4;
+    --color-grayscale-3: #e8e8e8;
+    --color-grayscale-6: #b6b6b6;
+    --color-grayscale-8: #969696;
+    --color-grayscale-10: #767676;
+    --color-grayscale-13: #454545;
+    --color-grayscale-14: #353535;
+    --color-grayscale-15: #1f1f1f;
+    --color-grayscale-16: #181818;
+    --color-primary: #aeb8c2;
+    --color-primary-dark: #84919e;
+  }
+
+  body {
+    background-color: #181818;
+    color: #e8e8e8;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Philosopher', 'Manrope', sans-serif;
+  }
+}
+
+.font-philosopher {
+  font-family: 'Philosopher', sans-serif;
+}
+
+.font-manrope {
+  font-family: 'Manrope', sans-serif;
+}
+
+@keyframes slideInMenuItem {
+  0% {
+    transform: translateX(-102%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-slideInMenuItem {
+  animation: slideInMenuItem 0.4s ease forwards;
+}
+
+/* Custom B+ON subtle scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #181818;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #353535;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #aeb8c2;
+}
+

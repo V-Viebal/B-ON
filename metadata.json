@@ -1,0 +1,8 @@
+{
+  "name": "B+ON 6",
+  "description": "Exclusive designer furniture brand by Studia 54. Handcrafted luxury collections, upholstered and cabinet furniture, Italian materials, 3D models for architects, and bespoke interior solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
