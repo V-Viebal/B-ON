@@ -17,9 +17,14 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - uses: docker/build-push-action@v6
         with:
           context: .
           push: true
-          tags: ghcr.io/v-viebal/b-on:latest
-
+          tags: |
+            ghcr.io/v-viebal/b-on:latest
+            vviebal/b-on:${{ github.sha }}
