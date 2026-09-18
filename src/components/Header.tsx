@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Heart, MapPin, X, Menu, Phone, ChevronDown, Download, ArrowRight } from 'lucide-react';
+import { Search, Heart, MapPin, X, Menu, Phone, ChevronDown, Download, ArrowRight, Pencil, LogIn } from 'lucide-react';
 import { MainCategory, SubCategory, PageType, AppLanguage } from '../types';
 
 interface HeaderProps {
@@ -16,6 +16,9 @@ interface HeaderProps {
   wishlistCount: number;
   currentLanguage: AppLanguage;
   onChangeLanguage: (lang: AppLanguage) => void;
+  isAdmin?: boolean;
+  onOpenAdmin?: () => void;
+  onSignInAdmin?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -32,6 +35,9 @@ export const Header: React.FC<HeaderProps> = ({
   wishlistCount,
   currentLanguage,
   onChangeLanguage,
+  isAdmin = false,
+  onOpenAdmin,
+  onSignInAdmin,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [catalogOpen, setCatalogOpen] = useState(false);
@@ -256,6 +262,31 @@ export const Header: React.FC<HeaderProps> = ({
               >
                 <Search className="w-4 h-4" />
               </button>
+
+              {/* Account action: sign in first, then switch to Edit Mode after admin authentication. */}
+              {isAdmin && onOpenAdmin ? (
+                <button
+                  id="header-admin-edit-btn"
+                  type="button"
+                  onClick={onOpenAdmin}
+                  className="hidden lg:inline-flex items-center gap-1.5 rounded-full border border-[#aeb8c2]/60 px-3 py-1.5 text-[10px] font-medium tracking-[0.14em] text-[#aeb8c2] hover:border-white hover:text-white transition-colors uppercase"
+                  title={currentLanguage === 'VI' ? 'Chuyển sang chế độ chỉnh sửa' : 'Switch to edit mode'}
+                >
+                  <Pencil className="w-3 h-3" />
+                  <span>{currentLanguage === 'VI' ? 'EDIT MODE' : 'EDIT MODE'}</span>
+                </button>
+              ) : onSignInAdmin ? (
+                <button
+                  id="header-admin-signin-btn"
+                  type="button"
+                  onClick={onSignInAdmin}
+                  className="hidden lg:inline-flex items-center gap-1.5 rounded-full border border-[#aeb8c2]/60 px-3 py-1.5 text-[10px] font-medium tracking-[0.14em] text-[#aeb8c2] hover:border-white hover:text-white transition-colors uppercase"
+                  title={currentLanguage === 'VI' ? 'Đăng nhập tài khoản admin' : 'Sign in as admin'}
+                >
+                  <LogIn className="w-3 h-3" />
+                  <span>{currentLanguage === 'VI' ? 'ĐĂNG NHẬP' : 'SIGN IN'}</span>
+                </button>
+              ) : null}
 
               {/* Wishlist Icon */}
               <button
@@ -640,6 +671,32 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
 
             <div className="space-y-4 text-base font-light text-[#e8e8e8]">
+              {isAdmin && onOpenAdmin ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    onOpenAdmin();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="flex items-center gap-2 text-left w-full uppercase tracking-[0.16em] text-[#aeb8c2] hover:text-white"
+                >
+                  <Pencil className="w-3.5 h-3.5" />
+                  <span>{currentLanguage === 'VI' ? 'EDIT MODE' : 'EDIT MODE'}</span>
+                </button>
+              ) : onSignInAdmin ? (
+                <button
+                  id="mobile-admin-signin-btn"
+                  type="button"
+                  onClick={() => {
+                    onSignInAdmin();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="flex items-center gap-2 text-left w-full uppercase tracking-[0.16em] text-[#aeb8c2] hover:text-white"
+                >
+                  <LogIn className="w-3.5 h-3.5" />
+                  <span>{currentLanguage === 'VI' ? 'ĐĂNG NHẬP' : 'SIGN IN'}</span>
+                </button>
+              ) : null}
               <button
                 onClick={() => {
                   onNavigatePage('in-stock');

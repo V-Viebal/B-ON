@@ -25,15 +25,40 @@ import { ProductDetailPage } from './components/ProductDetailPage';
 import { MaterialsPage } from './components/MaterialsPage';
 import { Footer } from './components/Footer';
 import { CollectionPage } from './components/CollectionPage';
-import { COLLECTIONS, COLLECTION_NAMES as CURATED_COLLECTION_NAMES } from './data/collectionData';
+import { COLLECTIONS, FurnitureCollection } from './data/collectionData';
+import { AdminPage } from './components/AdminPage';
+import { AdminLoginModal } from './components/AdminLoginModal';
 
-// Keep the navigation list limited to collections that have been explicitly
-// prepared for the B+ON website. At the moment that list contains only Linear.
-const COLLECTION_NAMES = CURATED_COLLECTION_NAMES;
+function isFurnitureCollection(value: unknown): value is FurnitureCollection {
+  if (!value || typeof value !== 'object') return false;
+  const candidate = value as Partial<FurnitureCollection>;
+  return (
+    candidate.id === 'linear' &&
+    typeof candidate.name === 'string' &&
+    typeof candidate.nameVi === 'string' &&
+    Array.isArray(candidate.editions) &&
+    candidate.editions.length > 0
+  );
+}
+
+const LOCAL_COLLECTION_STORAGE_KEY = 'bon.local.collection.linear';
+const LOCAL_ASSET_STORAGE_PREFIX = 'bon.local.asset.';
+const LOCAL_ADMIN_SESSION_KEY = 'bon.admin.session';
+
+function isLocalDevelopmentHost(): boolean {
+  if (typeof window === 'undefined') return false;
+  return ['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname);
+}
 
 export default function App() {
   // Page state: 'catalog' | 'in-stock' | 'about' | 'interiors' | 'blog' | 'designers' | 'materials' | 'contacts' | 'home'
   const [currentPage, setCurrentPage] = useState<PageType>('home');
+  const [collections, setCollections] = useState<FurnitureCollection[]>(COLLECTIONS);
+  const [adminLoginOpen, setAdminLoginOpen] = useState(false);
+  const [adminSession, setAdminSession] = useState<{ loading: boolean; isAdmin: boolean; email?: string; local?: boolean }>({
+    loading: true,
+    isAdmin: false,
+  });
   const [selectedMainCategory, setSelectedMainCategory] = useState<MainCategory>('cabinet');
   const [selectedSubCategory, setSelectedSubCategory] = useState<SubCategory>('all');
   const [selectedCollection, setSelectedCollection] = useState<string>('all');
@@ -56,6 +81,90 @@ export default function App() {
     priceFormatted?: string;
   } | null>(null);
 
+  const collectionNames = collections.map((collection) => collection.name);
+  const localDevelopment = isLocalDevelopmentHost();
+
+  // Shared content is authoritative on the public Worker. Local Vite development
+  // keeps its own draft in localStorage so the editor can be tested without
+  // pretending that localhost has a ChatGPT identity or a production database.
+  useEffect(() => {
+    const controller = new AbortController();
+
+    if (localDevelopment) {
+      try {
+        const stored = window.localStorage.getItem(LOCAL_COLLECTION_STORAGE_KEY);
+        if (stored) {
+          const payload: unknown = JSON.parse(stored);
+          if (isFurnitureCollection(payload)) setCollections([payload]);
+        }
+      } catch (error) {
+        console.warn('Local collection draft is unavailable; using bundled content.', error);
+      }
+      return () => controller.abort();
+    }
+
+    const loadSharedCollection = async () => {
+      try {
+        const response = await fetch('/api/content/linear', {
+          cache: 'no-store',
+          signal: controller.signal,
+        });
+        if (!response.ok) return;
+        const payload: unknown = await response.json();
+        if (isFurnitureCollection(payload)) {
+          setCollections([payload]);
+        }
+      } catch (error) {
+        if ((error as Error)?.name !== 'AbortError') {
+          console.warn('Shared collection content is unavailable; using local content.', error);
+        }
+      }
+    };
+
+    void loadSharedCollection();
+    return () => controller.abort();
+  }, [localDevelopment]);
+
+  // Public admin access uses the platform-provided ChatGPT identity headers.
+  // Localhost has a separate local-only session for editing a browser draft.
+  useEffect(() => {
+    const controller = new AbortController();
+
+    if (localDevelopment) {
+      const localSession = window.localStorage.getItem(LOCAL_ADMIN_SESSION_KEY) === 'authenticated';
+      setAdminSession({
+        loading: false,
+        isAdmin: localSession,
+        email: localSession ? 'admin@bon.local' : undefined,
+        local: true,
+      });
+      return () => controller.abort();
+    }
+
+    const loadAdminSession = async () => {
+      try {
+        const response = await fetch('/api/admin/me', {
+          cache: 'no-store',
+          signal: controller.signal,
+        });
+        if (!response.ok) throw new Error(`Admin session request failed: ${response.status}`);
+        const payload = (await response.json()) as { isAdmin?: boolean; email?: string | null };
+        setAdminSession({
+          loading: false,
+          isAdmin: payload.isAdmin === true,
+          email: payload.email || undefined,
+        });
+      } catch (error) {
+        if ((error as Error)?.name !== 'AbortError') {
+          setAdminSession({ loading: false, isAdmin: false });
+        }
+      }
+    };
+
+    void loadAdminSession();
+    return () => controller.abort();
+  }, [localDevelopment]);
+
   // Helper to build URL hash for current state
   const buildHash = useCallback(
     (page: PageType, mainCat?: MainCategory, subcat?: SubCategory): string => {
@@ -66,6 +175,7 @@ export default function App() {
       if (page === 'materials') return '#/materials';
       if (page === 'contacts') return '#/contacts';
       if (page === 'about') return '#/about';
+      if (page === 'admin') return '#/admin';
       if (page === 'product-detail') {
         return selectedDetailProduct ? `#/product/${selectedDetailProduct.id}` : '#/catalog';
       }
@@ -100,6 +210,9 @@ export default function App() {
     const raw = window.location.hash.replace(/^#\/?/, '').trim();
     if (!raw || raw === 'home') {
       return { page: 'home' };
+    }
+    if (raw === 'admin') {
+      return { page: 'admin' };
     }
     if (raw === 'about' || raw === 'o-nas' || raw === 've-chung-toi') {
       return { page: 'about' };
@@ -177,6 +290,7 @@ export default function App() {
       'designers',
       'materials',
       'contacts',
+      'admin',
     ];
 
     if (!validPages.includes(pageKey)) {
@@ -443,6 +557,10 @@ export default function App() {
         VI: 'Hệ Thống Showroom Flagship & Liên Hệ — B+ON',
         EN: 'Flagship Showrooms & Concierge — B+ON',
       },
+      admin: {
+        VI: 'Chế Độ Chỉnh Sửa Admin — B+ON',
+        EN: 'Admin Edit Mode — B+ON',
+      },
       'product-detail': {
         VI: selectedDetailProduct
           ? `${selectedDetailProduct.name} | Chi Tiết Sản Phẩm — B+ON`
@@ -498,9 +616,127 @@ export default function App() {
     navigateToPage('materials');
   };
 
-  const selectedCollectionDefinition = COLLECTIONS.find(
-    (collection) => collection.name === selectedCollection
-  );
+  const selectedCollectionDefinition =
+    selectedCollection === 'all'
+      ? undefined
+      : collections.find(
+          (collection) =>
+            collection.name === selectedCollection ||
+            collection.id === selectedCollection ||
+            (collection.id === 'linear' && selectedCollection.toLowerCase() === 'linear')
+        );
+
+  const handleAdminSignIn = useCallback(() => {
+    if (isLocalDevelopmentHost()) {
+      setAdminLoginOpen(true);
+      return;
+    }
+    window.location.assign('/signin-with-chatgpt?return_to=%2F%23%2Fadmin');
+  }, []);
+
+  const handleAdminSignOut = useCallback(() => {
+    if (isLocalDevelopmentHost()) {
+      window.localStorage.removeItem(LOCAL_ADMIN_SESSION_KEY);
+      setAdminSession({ loading: false, isAdmin: false, local: true });
+      setAdminLoginOpen(false);
+      navigateToPage('home');
+      return;
+    }
+    window.location.assign('/signout-with-chatgpt?return_to=%2F');
+  }, [navigateToPage]);
+
+  const handleAdminLogin = useCallback(async (username: string, password: string) => {
+    // This demo credential is intentionally scoped to the local Vite host.
+    // Public hosting uses the platform ChatGPT sign-in flow instead.
+    if (!isLocalDevelopmentHost()) {
+      throw new Error('Hãy đăng nhập bằng ChatGPT trên public website.');
+    }
+    if (username.toLowerCase() !== 'bonadmin' || password !== 'BONadmin2026!') {
+      throw new Error('Sai tài khoản hoặc mật khẩu.');
+    }
+    window.localStorage.setItem(LOCAL_ADMIN_SESSION_KEY, 'authenticated');
+    setAdminSession({ loading: false, isAdmin: true, email: 'bonadmin', local: true });
+    setAdminLoginOpen(false);
+    navigateToPage('admin');
+  }, [navigateToPage]);
+
+  const handleAdminSave = useCallback(async (collection: FurnitureCollection) => {
+    if (isLocalDevelopmentHost()) {
+      try {
+        window.localStorage.setItem(LOCAL_COLLECTION_STORAGE_KEY, JSON.stringify(collection));
+      } catch {
+        throw new Error('Không thể lưu bản nháp local trong trình duyệt này.');
+      }
+      setCollections((current) =>
+        current.some((item) => item.id === collection.id)
+          ? current.map((item) => (item.id === collection.id ? collection : item))
+          : [...current, collection]
+      );
+      return;
+    }
+
+    const response = await fetch('/api/admin/content/linear', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      cache: 'no-store',
+      body: JSON.stringify(collection),
+    });
+
+    let payload: unknown = null;
+    try {
+      payload = await response.json();
+    } catch {
+      // Keep the HTTP status as the useful error when the Worker has no JSON body.
+    }
+
+    if (!response.ok) {
+      const message =
+        payload && typeof payload === 'object' && 'error' in payload && typeof payload.error === 'string'
+          ? payload.error
+          : 'The shared content could not be saved.';
+      throw new Error(message);
+    }
+
+    if (!isFurnitureCollection(payload)) {
+      throw new Error('The server returned an invalid collection.');
+    }
+
+    setCollections((current) =>
+      current.some((item) => item.id === payload.id)
+        ? current.map((item) => (item.id === payload.id ? payload : item))
+        : [...current, payload]
+    );
+  }, []);
+
+  const handleAdminAssetUpload = useCallback(async (file: File, assetKey: string): Promise<string> => {
+    if (isLocalDevelopmentHost()) {
+      const maxBytes = 5 * 1024 * 1024;
+      if (!file.type.startsWith('image/')) throw new Error('Vui lòng chọn file hình ảnh.');
+      if (file.size > maxBytes) throw new Error('Ảnh local tối đa 5 MB.');
+      const dataUrl = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result));
+        reader.onerror = () => reject(new Error('Không thể đọc file hình ảnh.'));
+        reader.readAsDataURL(file);
+      });
+      try {
+        window.localStorage.setItem(`${LOCAL_ASSET_STORAGE_PREFIX}${assetKey}`, dataUrl);
+      } catch {
+        throw new Error('Ảnh quá lớn để lưu trong trình duyệt local. Hãy dùng URL ảnh hoặc ảnh nhỏ hơn.');
+      }
+      return dataUrl;
+    }
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('assetKey', assetKey);
+    const response = await fetch('/api/admin/assets', { method: 'POST', body: formData });
+    const payload = (await response.json().catch(() => null)) as { url?: string; error?: string } | null;
+    if (!response.ok || !payload?.url) {
+      throw new Error(payload?.error || 'Không thể tải ảnh lên.');
+    }
+    return payload.url;
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#141414] text-[#e8e8e8] font-manrope selection:bg-[#aeb8c2] selection:text-[#141414]">
@@ -509,7 +745,7 @@ export default function App() {
         currentPage={currentPage}
         onNavigatePage={navigateToPage}
         onSelectCategory={(cat, subcat) => navigateToPage('catalog', cat, subcat)}
-        collections={COLLECTION_NAMES}
+        collections={collectionNames}
         onSelectCollection={selectCollection}
         onOpenSearch={() => setSearchModalOpen(true)}
         onOpenWishlist={() => setWishlistDrawerOpen(true)}
@@ -519,12 +755,36 @@ export default function App() {
         wishlistCount={wishlistIds.size}
         currentLanguage={currentLanguage}
         onChangeLanguage={setCurrentLanguage}
+        isAdmin={adminSession.isAdmin}
+        onOpenAdmin={() => navigateToPage('admin')}
+        onSignInAdmin={handleAdminSignIn}
+      />
+
+      <AdminLoginModal
+        isOpen={localDevelopment && adminLoginOpen}
+        currentLanguage={currentLanguage}
+        onClose={() => setAdminLoginOpen(false)}
+        onSubmit={handleAdminLogin}
+        isLocal={localDevelopment}
       />
 
       <main className="w-full">
         {/* ======================================================== */}
         {/* PAGE 1: CATALOG (Matches user screenshot) */}
         {/* ======================================================== */}
+        {currentPage === 'admin' && (
+          <AdminPage
+            collection={collections[0] || COLLECTIONS[0]}
+            currentLanguage={currentLanguage}
+            session={adminSession}
+            onSignIn={handleAdminSignIn}
+            onSignOut={handleAdminSignOut}
+            onSave={handleAdminSave}
+            onUploadAsset={handleAdminAssetUpload}
+            onBack={() => navigateToPage('home')}
+          />
+        )}
+
         {currentPage === 'catalog' && (
           selectedCollectionDefinition ? (
             <CollectionPage

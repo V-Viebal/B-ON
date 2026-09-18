@@ -185,11 +185,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             <div className="lg:col-span-7">
               <p className="text-base sm:text-lg lg:text-[1.25rem] font-light leading-relaxed text-[#e8e8e8] max-w-[680px]">
                 <span className="text-[#aeb8c2] font-normal">
-                  {isVi ? 'B+ON từ B+Furniture' : 'B+ON by B+Furniture'}
+                  {isVi ? 'B+ON' : 'B+ON'}
                 </span>{' '}
                 {isVi
-                  ? '— thương hiệu nội thất cao cấp từ Studia 54, được kiến tạo trên nền tảng công nghệ Ý và bàn tay thủ công tinh xảo bậc thầy.'
-                  : '— luxury designer furniture brand by Studia 54, created on Italian craft technologies and bespoke mastery.'}
+                  ? '— thương hiệu nội thất cao cấp từ B+Furniture hợp tác với Usofa, được kiến tạo trên nền tảng công nghệ Ý và bàn tay thủ công tinh xảo bậc thầy của nghệ nhân Việt.'
+                  : '— a luxury furniture brand from B+Furniture in collaboration with Usofa, created on Italian technology and the refined handcraft of Vietnamese artisans.'}
               </p>
             </div>
 

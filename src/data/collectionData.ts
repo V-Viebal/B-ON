@@ -8,6 +8,12 @@ export interface CollectionEdition {
   layoutImage: string;
   materialsImage: string;
   roomSize: string;
+  overview?: string;
+  overviewVi?: string;
+  settingDescription?: string;
+  settingDescriptionVi?: string;
+  paletteDescription?: string;
+  paletteDescriptionVi?: string;
   productLineup: string[];
   palette: string[];
 }

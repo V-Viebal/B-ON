@@ -8,3 +8,7 @@ tmp-linear-review/
 *.log
 .env*
 !.env.example
+
+tmp-compress-review/
+tmp-linear-review/
+.sites-package-tmp/

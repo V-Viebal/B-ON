@@ -10,7 +10,8 @@ export type PageType =
   | 'designers' 
   | 'materials' 
   | 'contacts'
-  | 'product-detail';
+  | 'product-detail'
+  | 'admin';
 
 export type MainCategory = 'all' | 'upholstered' | 'cabinet' | 'in-stock' | 'by-rooms';
 

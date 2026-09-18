@@ -45,10 +45,19 @@ export const CollectionVersionDetailView: React.FC<CollectionVersionDetailViewPr
 
   const editionNarrative = useMemo(() => {
     const palette = edition.palette.slice(0, 3).join(', ');
-    return isVi
+    const defaultNarrative = isVi
       ? `${edition.name} là một phương án phối cảnh của hệ sofa Linear, kết hợp các module chủ đạo với bàn và ghế điểm nhấn để tạo nên một không gian đồng nhất. Bảng màu ${palette} được tuyển chọn nhằm định hình sắc thái riêng cho từng bối cảnh sống.`
       : `${edition.name} is a composed setting from the Linear sofa system, pairing its core modules with accent tables and lounge pieces. The ${palette} palette gives this interior scenario its distinct atmosphere.`;
+    return isVi ? edition.overviewVi || defaultNarrative : edition.overview || defaultNarrative;
   }, [edition, isVi]);
+
+  const settingDescription = isVi
+    ? edition.settingDescriptionVi || 'Các module Linear được sắp đặt theo tỷ lệ của không gian, tạo nên một bố cục mở nhưng có điểm tựa. Bàn phụ, bàn trà và ghế lounge hoàn thiện trải nghiệm sử dụng mà không làm mất đi sự tĩnh tại của tổng thể.'
+    : edition.settingDescription || 'Linear modules are arranged to the proportions of the room, creating an open composition with a clear architectural anchor. Accent tables and lounge seating complete the experience without disturbing the calm of the whole.';
+
+  const paletteDescription = isVi
+    ? edition.paletteDescriptionVi || 'Bảng màu và vật liệu được trích xuất từ hồ sơ Linear do B+ON cung cấp, giữ nguyên tên gọi để thuận tiện đối chiếu khi tư vấn.'
+    : edition.paletteDescription || 'The palette and materials are transcribed from the B+ON Linear presentation deck, preserving the original names for consultation and specification.';
 
   const copyLink = () => {
     if (navigator.clipboard) {
@@ -234,9 +243,7 @@ export const CollectionVersionDetailView: React.FC<CollectionVersionDetailViewPr
                   {collection.name} / {edition.name}
                 </h2>
                 <p className="mt-6 text-sm sm:text-base text-[#a0a0a0] font-light leading-relaxed">
-                  {isVi
-                    ? 'Các module Linear được sắp đặt theo tỷ lệ của không gian, tạo nên một bố cục mở nhưng có điểm tựa. Bàn phụ, bàn trà và ghế lounge hoàn thiện trải nghiệm sử dụng mà không làm mất đi sự tĩnh tại của tổng thể.'
-                    : 'Linear modules are arranged to the proportions of the room, creating an open composition with a clear architectural anchor. Accent tables and lounge seating complete the experience without disturbing the calm of the whole.'}
+                  {settingDescription}
                 </p>
                 <div className="mt-8 flex flex-wrap gap-2">
                   {edition.productLineup.slice(0, 5).map((product) => (
@@ -321,9 +328,7 @@ export const CollectionVersionDetailView: React.FC<CollectionVersionDetailViewPr
                 {edition.name}
               </h2>
               <p className="mt-5 text-sm text-[#9b9b9e] font-light leading-relaxed">
-                {isVi
-                  ? 'Bảng màu và vật liệu được trích xuất từ hồ sơ Linear do B+ON cung cấp, giữ nguyên tên gọi để thuận tiện đối chiếu khi tư vấn.'
-                  : 'The palette and materials are transcribed from the B+ON Linear presentation deck, preserving the original names for consultation and specification.'}
+                {paletteDescription}
               </p>
               <div className="mt-7 flex flex-wrap gap-2">
                 {edition.palette.map((item) => (
